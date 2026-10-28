@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The app's near-black ground (lib/ui/theme.dart), so launch does not flash white. -->
+    <color name="trade_background">#FF0B0B10</color>
+</resources>

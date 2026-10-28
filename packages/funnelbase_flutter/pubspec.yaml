@@ -1,0 +1,39 @@
+name: funnelbase_flutter
+description: Funnelbase analytics and push for Flutter apps, over the native Android and iOS SDKs.
+version: 0.1.0
+repository: https://github.com/Funnelbase/funnelbase-flutter/tree/main/packages/funnelbase_flutter
+homepage: https://funnel-base.com
+issue_tracker: https://github.com/Funnelbase/funnelbase-flutter/issues
+topics:
+  - analytics
+  - push-notifications
+
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+  flutter: '>=3.41.0'
+
+# A federated plugin (docs/sdk-flutter.md in the repository): this package is the API apps call, and each platform
+# is a package of its own that implements funnelbase_flutter_platform_interface. Android and iOS
+# only — anything else gets the platform interface's default, which refuses every call.
+flutter:
+  plugin:
+    platforms:
+      android:
+        default_package: funnelbase_flutter_android
+      ios:
+        default_package: funnelbase_flutter_ios
+
+dependencies:
+  flutter:
+    sdk: flutter
+  funnelbase_flutter_platform_interface: ^0.1.0
+  funnelbase_flutter_android: ^0.1.0
+  funnelbase_flutter_ios: ^0.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  plugin_platform_interface: ^2.1.8

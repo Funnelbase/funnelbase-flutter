@@ -1,0 +1,67 @@
+# Analysis and the Dart tests of the four packages and the demo, on Linux. The native halves are
+# the native SDKs, tested in their own repositories; building the demo for a device needs an
+# Android SDK and Xcode, which docs/sdk-flutter.md leaves to a person.
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  dart:
+    name: analyze and test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - packages/funnelbase_flutter_platform_interface
+          - packages/funnelbase_flutter_android
+          - packages/funnelbase_flutter_ios
+          - packages/funnelbase_flutter
+          - demo-flutter
+    steps:
+      - uses: actions/checkout@v5
+      # The version the packages are built against (docs/sdk-flutter.md); raise it with that doc.
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.41.0
+          channel: stable
+      # One resolution for the whole workspace, at its root.
+      - run: flutter pub get
+      - run: flutter analyze
+        working-directory: ${{ matrix.package }}
+      - run: flutter test
+        working-directory: ${{ matrix.package }}
+
+  publishable:
+    name: publish dry run
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - funnelbase_flutter_platform_interface
+          - funnelbase_flutter_android
+          - funnelbase_flutter_ios
+          - funnelbase_flutter
+    steps:
+      - uses: actions/checkout@v5
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.41.0
+          channel: stable
+      - run: flutter pub get
+      - run: flutter pub publish --dry-run
+        working-directory: packages/${{ matrix.package }}

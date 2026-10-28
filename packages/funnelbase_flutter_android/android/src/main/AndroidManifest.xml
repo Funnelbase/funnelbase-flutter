@@ -1,0 +1,24 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- POST_NOTIFICATIONS is not declared here, for the reason the native SDK gives in its own
+         manifest: a manifest merge would put it in every app that uses the plugin, including apps
+         that send no push. An app that asks with Analytics.push.requestPermission() declares it;
+         without the declaration Android answers no without showing a prompt, and the plugin logs
+         why. -->
+
+    <application>
+
+        <!-- Starts the native SDK before the Application's own onCreate, from the configuration Dart
+             last passed to Analytics.initialize. A push or a tapped notification can start the
+             process with no Flutter engine and no Dart at all; without this, the messaging service
+             and the SDK's tap activity would find the SDK uninitialised and drop both
+             (docs/sdk-flutter.md, "Before Dart runs"). Not exported, and nothing queries it: a
+             content provider is simply the earliest code a library gets to run. -->
+        <provider
+            android:name="com.funnelbase.sdk.flutter.AnalyticsFlutterInitProvider"
+            android:authorities="${applicationId}.analytics-flutter-init"
+            android:exported="false" />
+
+    </application>
+
+</manifest>

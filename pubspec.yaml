@@ -1,0 +1,22 @@
+# The repository's pub workspace: the four packages of the Flutter SDK and the demo app, resolved
+# together. Each package depends on its siblings by version, as it will once published; inside the
+# workspace those versions resolve to the packages here, so an edit to any of them is in the next
+# build with nothing to publish. Run `flutter pub get` here, at the root.
+name: funnelbase_flutter_workspace
+publish_to: none
+
+environment:
+  sdk: ^3.11.0
+
+workspace:
+  - packages/funnelbase_flutter_platform_interface
+  - packages/funnelbase_flutter_android
+  - packages/funnelbase_flutter_ios
+  - packages/funnelbase_flutter
+  - demo-flutter
+
+# The iOS plugin is Swift Package Manager only, and `flutter pub get` here sets up the demo's
+# plugins too, so the switch the demo's pubspec sets is needed at the root as well.
+flutter:
+  config:
+    enable-swift-package-manager: true

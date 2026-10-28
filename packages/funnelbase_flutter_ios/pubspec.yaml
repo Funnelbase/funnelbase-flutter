@@ -1,0 +1,38 @@
+name: funnelbase_flutter_ios
+description: The iOS implementation of funnelbase_flutter, over the native Funnelbase iOS SDK.
+version: 0.1.0
+repository: https://github.com/Funnelbase/funnelbase-flutter/tree/main/packages/funnelbase_flutter_ios
+homepage: https://funnel-base.com
+issue_tracker: https://github.com/Funnelbase/funnelbase-flutter/issues
+topics:
+  - analytics
+  - push-notifications
+
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+  flutter: '>=3.41.0'
+
+# SwiftPM only: ios/funnelbase_flutter_ios/Package.swift depends on the native iOS SDK, the
+# funnelbase-ios Swift package. There is no podspec — a CocoaPods app waits until one needs it.
+flutter:
+  plugin:
+    implements: funnelbase_flutter
+    platforms:
+      ios:
+        pluginClass: AnalyticsFlutterPlugin
+        dartPluginClass: AnalyticsIOS
+
+dependencies:
+  flutter:
+    sdk: flutter
+  funnelbase_flutter_platform_interface: ^0.1.0
+  # Pigeon's generated Dart imports it.
+  meta: ^1.16.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  pigeon: ^27.3.0

@@ -1,0 +1,11 @@
+// Copy this file to `Signing.xcconfig` (gitignored) to build for a physical device.
+//
+// The app and its notification service extension both carry an app group entitlement, and the app
+// carries `aps-environment` for push, so a device build has to be signed by a real developer team.
+// A simulator build needs neither, which is why a clean clone has no team and still builds.
+//
+// Register `group.com.analytics.demo.trading.flutter` under that team, or change the group in
+// lib/config.dart, ios/Runner/Runner.entitlements, ios/NotificationService/*.entitlements and
+// NotificationService.swift together.
+
+DEVELOPMENT_TEAM =

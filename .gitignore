@@ -1,0 +1,8 @@
+# The packages and the demo keep their own .gitignore; this covers the workspace root.
+.DS_Store
+.dart_tool/
+.idea/
+*.iml
+build/
+# A workspace's lockfile is the demo's (an app) as much as the packages', and CI resolves fresh.
+/pubspec.lock

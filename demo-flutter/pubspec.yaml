@@ -1,0 +1,45 @@
+name: trade_demo
+description: "The trading demo, in Flutter: the native demos screen for screen, over funnelbase_flutter."
+publish_to: 'none'
+version: 0.1.0+1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+  flutter: '>=3.41.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # The SDK, by version exactly as a customer's app depends on it. Inside this repository's pub
+  # workspace the version resolves to packages/, so an edit to any of the four packages is picked
+  # up by the next build with nothing to publish.
+  funnelbase_flutter: ^0.1.0
+  # SHA-256 for the user id derived from a username (lib/identity/user_id.dart). BSD-3, Dart team.
+  crypto: 3.0.7
+  # en-US money formatting, fixed rather than the device's locale (lib/ui/format/money.dart). BSD-3.
+  intl: 0.20.2
+  # Where the one small file of who is signed in and what they favourited lives
+  # (lib/data/session_store.dart). BSD-3, Flutter team. Not shared_preferences: its Android side
+  # applies the `kotlin-android` plugin, which AGP 9's built-in Kotlin refuses, and this app's
+  # Android build is on AGP 9 because the native SDK is (android/settings.gradle.kts).
+  path_provider: 2.1.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  # integration_test/: the sign-up walk on a device, through the real plugin and native SDK.
+  integration_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  # The widget test swaps in a fake platform, the way a plugin's own tests do.
+  funnelbase_flutter_platform_interface: ^0.1.0
+  plugin_platform_interface: ^2.1.8
+
+flutter:
+  uses-material-design: true
+  config:
+    # The native iOS SDK is a Swift package and funnelbase_flutter_ios has no podspec, so this
+    # app builds with Flutter's Swift Package Manager integration, switched on here rather than
+    # globally so no other Flutter project on the machine changes with it.
+    enable-swift-package-manager: true

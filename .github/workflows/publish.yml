@@ -1,0 +1,51 @@
+# Publishes one package to pub.dev from a tag named `<package>-v<version>`. Authentication is
+# GitHub's OIDC token, which pub.dev trusts once automated publishing is enabled on the package's
+# admin page (RELEASING.md) — the repository holds no pub.dev secret.
+name: publish
+
+on:
+  push:
+    tags:
+      - "funnelbase_flutter*-v[0-9]+.[0-9]+.[0-9]+*"
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: publish ${{ github.ref_name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    # Required reviewers on this environment make every publish wait for a maintainer.
+    environment: pub.dev
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Read the package and version from the tag
+        id: tag
+        run: |
+          tag="${GITHUB_REF_NAME}"
+          package="${tag%-v*}"
+          version="${tag##*-v}"
+          dir="packages/${package}"
+          if [ ! -f "${dir}/pubspec.yaml" ]; then
+            echo "::error::No package ${package} for tag ${tag}"; exit 1
+          fi
+          declared="$(sed -n 's/^version: *//p' "${dir}/pubspec.yaml")"
+          if [ "${declared}" != "${version}" ]; then
+            echo "::error::Tag ${tag} says ${version}, ${dir}/pubspec.yaml says ${declared}"; exit 1
+          fi
+          echo "dir=${dir}" >> "$GITHUB_OUTPUT"
+
+      # Sets up pub.dev's OIDC token for `pub publish`, whichever SDK runs it.
+      - uses: dart-lang/setup-dart@v1
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.41.0
+          channel: stable
+      - run: flutter pub get
+      - run: flutter pub publish --force
+        working-directory: ${{ steps.tag.outputs.dir }}

@@ -1,0 +1,6 @@
+#include "Generated.xcconfig"
+
+// A developer team for a device build, if you have made one (Signing.example.xcconfig). Optional:
+// `#include?` is silent when the file is absent, which is how a clean clone builds for the
+// simulator with no team at all — the same arrangement as demo-ios's Build.xcconfig.
+#include? "Signing.xcconfig"
