@@ -47,7 +47,8 @@ app.*.map.json
 # The demo's ingest keys are credentials, like demo-android's local.properties: config.json is the
 # copy of config.example.json with them filled in, passed as --dart-define-from-file=config.json.
 /config.json
-# A real Firebase project's file; the Google services plugin is applied only when it is there.
+# A real Firebase project's files; the Google services plugin is applied only when it is there.
 /android/app/google-services.json
+/ios/Runner/GoogleService-Info.plist
 # Signing for a device: a developer team of your own (ios/Flutter/Signing.example.xcconfig).
 /ios/Flutter/Signing.xcconfig
