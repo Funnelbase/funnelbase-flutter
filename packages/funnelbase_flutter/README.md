@@ -38,7 +38,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Analytics.initialize(const AnalyticsConfig(
     apiKey: '<ingest key>',
-    endpoint: 'https://ingest.example.com',
+    endpoint: 'https://ingest.funnel-base.com',
     ios: IosOptions(appGroup: 'group.com.example.app'),
   ));
   runApp(MaterialApp(navigatorObservers: [AnalyticsNavigatorObserver()], home: const Home()));
@@ -50,7 +50,7 @@ Analytics.reset(); // at sign-out
 ```
 
 An ingest key is issued for one platform, so an app that ships on both passes the key for the
-platform it is running on.
+platform it is running on. The endpoint is shown on Manage → Platforms; a self-hosted install uses its own address.
 
 On iOS, add one line to the app's `AppDelegate`, so a tap that launched the app is not lost:
 

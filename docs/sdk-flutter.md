@@ -44,7 +44,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Analytics.initialize(const AnalyticsConfig(
     apiKey: key,
-    endpoint: 'https://ingest.example.com',
+    endpoint: 'https://ingest.funnel-base.com',
     ios: IosOptions(appGroup: 'group.com.example.app'),
   ));
   runApp(MaterialApp(navigatorObservers: [AnalyticsNavigatorObserver()], ...));
