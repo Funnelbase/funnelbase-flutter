@@ -27,10 +27,12 @@ Kotlin is enough). The
 [package README](packages/funnelbase_flutter/README.md) has the quick start.
 
 ```dart
-await Analytics.initialize(const AnalyticsConfig(apiKey: '<ingest key>', endpoint: 'https://ingest.example.com'));
+await Analytics.initialize(const AnalyticsConfig(apiKey: '<ingest key>', endpoint: 'https://ingest.funnel-base.com'));
 Analytics.track('instrument_viewed', {'symbol': 'AAPL'});
 Analytics.identify(userId, {'plan': 'pro'});
 ```
+
+The endpoint is shown on Manage → Platforms; a self-hosted install uses its own address.
 
 ## Docs
 
