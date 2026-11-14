@@ -13,7 +13,7 @@ group = "com.funnelbase.sdk.flutter"
 version = "0.1.0"
 
 // The native SDK this version is written against. Raise it with the CHANGELOG.
-val funnelbaseAndroidVersion = "0.4.0"
+val funnelbaseAndroidVersion = "0.5.0"
 
 // A plugin's repositories apply to its own subproject only, so they are listed here as well as in
 // the app's build. mavenLocal() after Maven Central: a version not released yet resolves from
