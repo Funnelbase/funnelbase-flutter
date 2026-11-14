@@ -1,6 +1,6 @@
 name: funnelbase_flutter
 description: Funnelbase analytics and push for Flutter apps, over the native Android and iOS SDKs.
-version: 0.1.0
+version: 0.2.0
 repository: https://github.com/Funnelbase/funnelbase-flutter/tree/main/packages/funnelbase_flutter
 homepage: https://funnel-base.com
 issue_tracker: https://github.com/Funnelbase/funnelbase-flutter/issues
@@ -29,8 +29,8 @@ dependencies:
   flutter:
     sdk: flutter
   funnelbase_flutter_platform_interface: ^0.1.0
-  funnelbase_flutter_android: ^0.1.0
-  funnelbase_flutter_ios: ^0.1.0
+  funnelbase_flutter_android: ^0.2.0
+  funnelbase_flutter_ios: ^0.2.0
 
 dev_dependencies:
   flutter_test:

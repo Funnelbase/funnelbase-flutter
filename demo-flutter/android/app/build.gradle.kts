@@ -55,7 +55,7 @@ dependencies {
     // involved. It resolves without a Firebase project; only the plugin above needs one. It
     // exposes the native SDK as `api`, which MainActivity's simulate channel calls directly. The
     // same version funnelbase_flutter_android depends on.
-    implementation("com.funnel-base:funnelbase-android-fcm:0.4.0")
+    implementation("com.funnel-base:funnelbase-android-fcm:0.5.0")
 }
 
 // integration_test (a dev dependency, in debug builds) asks for espresso 3.2, whose core and

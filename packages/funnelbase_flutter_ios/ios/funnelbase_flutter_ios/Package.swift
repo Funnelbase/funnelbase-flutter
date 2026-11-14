@@ -12,7 +12,7 @@ import PackageDescription
 let localSdk = ProcessInfo.processInfo.environment["FUNNELBASE_IOS_PATH"].flatMap { $0.isEmpty ? nil : $0 }
 
 let sdk: Package.Dependency = localSdk.map { .package(path: $0) }
-    ?? .package(url: "https://github.com/Funnelbase/funnelbase-ios.git", from: "0.2.0")
+    ?? .package(url: "https://github.com/Funnelbase/funnelbase-ios.git", from: "0.3.0")
 
 let package = Package(
     name: "funnelbase_flutter_ios",

@@ -14,7 +14,7 @@ dependencies:
   # The SDK, by version exactly as a customer's app depends on it. Inside this repository's pub
   # workspace the version resolves to packages/, so an edit to any of the four packages is picked
   # up by the next build with nothing to publish.
-  funnelbase_flutter: ^0.1.0
+  funnelbase_flutter: ^0.2.0
   # SHA-256 for the user id derived from a username (lib/identity/user_id.dart). BSD-3, Dart team.
   crypto: 3.0.7
   # en-US money formatting, fixed rather than the device's locale (lib/ui/format/money.dart). BSD-3.

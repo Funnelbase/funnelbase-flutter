@@ -1,6 +1,6 @@
 name: funnelbase_flutter_android
 description: The Android implementation of funnelbase_flutter, over the native Funnelbase Android SDK.
-version: 0.1.0
+version: 0.2.0
 repository: https://github.com/Funnelbase/funnelbase-flutter/tree/main/packages/funnelbase_flutter_android
 homepage: https://funnel-base.com
 issue_tracker: https://github.com/Funnelbase/funnelbase-flutter/issues
